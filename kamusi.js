@@ -39,3 +39,31 @@ switch (day) {
 }
 
 console.log("Today is " + dayName);
+
+
+//constructor
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  
+  this.sayHello = function() {
+    console.log("Hello, my name is " + this.name);
+  };
+}
+
+let person1 = new Person("Alice", 30);
+let person2 = new Person("Bob", 25);
+
+person1.sayHello(); // output: "Hello, my name is Alice"
+person2.sayHello(); // output: "Hello, my name is Bob"
+class MyPerson{
+  constructor(name,age) {
+    this.name =name;
+    this.age=age;
+  }
+  function readName(name,age){
+    console.log(`My name is ${name} and i have ${age} years old`);
+  }
+}
+const person3=new MyPerson(alex,20);
+person3.readName();
