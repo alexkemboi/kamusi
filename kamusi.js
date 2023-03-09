@@ -61,9 +61,9 @@ class MyPerson{
     this.name =name;
     this.age=age;
   }
-  function readName(name,age){
+  readName(name,age){
     console.log(`My name is ${name} and i have ${age} years old`);
   }
 }
-const person3=new MyPerson(alex,20);
-person3.readName();
+const person3=new MyPerson();
+person3.readName('alex',20);
