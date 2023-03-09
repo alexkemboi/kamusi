@@ -1,5 +1,8 @@
 let words = ['banana', 'apple', 'orange', 'grape', 'cherry'];
 let students=['alex','pius','zack','mary','john'];
+let studentsList='';
+students.forEach((student)=>{studentsList+=`<li>${student}</li>`});
+document.getElementById('word').innerHTML=studentsList;
 // Sort the array in reverse alphabetical order
 function sortValues(values){
   
