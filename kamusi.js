@@ -9,7 +9,12 @@ function sortValues(values){
 const sortedValues= values.sort();
 return sortedValues;
 }
-console.log(sortValues(students));
+const sortedStudents=sortValues(students);
+let tableData="";
+sortedStudents.forEach((names)=>{
+   tableData+=`<tr><td style="color:black;">${names}</td></tr>`
+});
+document.getElementById('tBody').innerHTML=tableData;
 
 //switch statement
 let day = 5;
