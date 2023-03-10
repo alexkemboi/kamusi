@@ -12,7 +12,7 @@ return sortedValues;
 const sortedStudents = sortValues(students);
 let tableData = "";
 sortedStudents.forEach((names) => {
-  tableData += `<tr style="background-color: #fff;"><td style="padding: 10px; border: 1px solid #ddd;">John</td><td style="padding: 10px; border: 1px solid #ddd;">${names}</td><td style="padding: 10px; border: 1px solid #ddd;"><button class="clickName">Click</button></td></tr>`;
+  tableData += `<tr style="background-color: #fff;"><td style="padding: 10px; border: 1px solid #ddd;"><input type="checkbox"/></td><td style="padding: 10px; border: 1px solid #ddd;">John</td><td style="padding: 10px; border: 1px solid #ddd;">${names}</td><td style="padding: 10px; border: 1px solid #ddd;"><button class="clickName">Click</button></td></tr>`;
 });
 document.getElementById("tBody").innerHTML = tableData;
 
@@ -21,11 +21,36 @@ tbody.addEventListener("click", (event) => {
   if (event.target.classList.contains("clickName")) {
     console.log("working");
     const row = event.target.parentNode.parentNode; 
-    const name = row.children[1].textContent; // Get the name value from the second td element
-    const john = row.children[0].textContent; // Get the John value from the first td element
+    const name = row.children[2].textContent; // Get the name value from the second td element
+    const john = row.children[1].textContent; // Get the John value from the first td element
     alert(`Name: ${name}, John: ${john}`);
   }
 });
+
+const checkboxBtn = document.getElementById("checkboxBtn");
+checkboxBtn.addEventListener("click", () => {
+  const table = document.getElementById("tableData");
+  const rows = table.getElementsByTagName("tr");
+  const checkedRows = [];
+  for (let i = 0; i < rows.length; i++) {
+    const checkbox = rows[i].querySelector('input[type="checkbox"]');
+    if (checkbox && checkbox.checked) {
+      const cells = rows[i].getElementsByTagName("td");
+      const rowContent = [];
+      for (let j = 1; j < cells.length; j++) { // start at j = 1 to skip the checkbox column
+        rowContent.push(cells[j].textContent);
+      }
+      checkedRows.push(rowContent);
+    }
+  }
+  console.log(checkedRows);
+  if (checkedRows.length > 0) {
+    alert(`Checked rows:\n${JSON.stringify(checkedRows)}`);
+  } else {
+    alert("No rows checked.");
+  }
+});
+
 
 //switch statement
 let day = 5;
