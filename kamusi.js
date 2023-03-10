@@ -9,12 +9,23 @@ function sortValues(values){
 const sortedValues= values.sort();
 return sortedValues;
 }
-const sortedStudents=sortValues(students);
-let tableData="";
-sortedStudents.forEach((names)=>{
-   tableData+=`<tr><td style="color:black;">${names}</td></tr>`
+const sortedStudents = sortValues(students);
+let tableData = "";
+sortedStudents.forEach((names) => {
+  tableData += `<tr style="background-color: #fff;"><td style="padding: 10px; border: 1px solid #ddd;">John</td><td style="padding: 10px; border: 1px solid #ddd;">${names}</td><td style="padding: 10px; border: 1px solid #ddd;"><button class="clickName">Click</button></td></tr>`;
 });
-document.getElementById('tBody').innerHTML=tableData;
+document.getElementById("tBody").innerHTML = tableData;
+
+const tbody = document.getElementById("tBody");
+tbody.addEventListener("click", (event) => {
+  if (event.target.classList.contains("clickName")) {
+    console.log("working");
+    const row = event.target.parentNode.parentNode; 
+    const name = row.children[1].textContent; // Get the name value from the second td element
+    const john = row.children[0].textContent; // Get the John value from the first td element
+    alert(`Name: ${name}, John: ${john}`);
+  }
+});
 
 //switch statement
 let day = 5;
